@@ -1,0 +1,38 @@
+- hosts: stend
+  tasks:
+  - name: Copy config.toml and masterchain-genesis
+    copy:
+      src: /home/user/ansible/stend/{{ item }}
+      dest: /home/user/masterchain
+    with_items:
+      - config.toml
+      - masterchain-genesis.json
+
+- hosts: miners
+  tasks:
+  - name: configure masterchain as a service
+    copy:
+      src: /home/user/ansible/stend/masterchain-miner.service
+      dest: /etc/systemd/system/masterchain.service
+    become: yes
+
+  - name: daemon reload
+    shell: systemctl daemon-reload
+    args:
+      warn: no
+    become: yes
+
+- hosts: readers
+  tasks:
+  - name: configure masterchain as a service
+    copy:
+      src: /home/user/ansible/stend/masterchain.service
+      dest: /etc/systemd/system/masterchain.service
+    become: yes
+
+  - name: daemon reload
+    shell: systemctl daemon-reload
+    args:
+      warn: no
+    become: yes
+ 

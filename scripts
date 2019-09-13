@@ -1,0 +1,18 @@
+ansible -i ./stend.txt -m copy -a "src=/home/user/ansible/stend/create-certs.sh dest=/home/user/bin/create-certs.sh" test
+ansible-playbook -i ./stend.txt ./cert.yml -l test
+
+ssh user@192.168.105.18 -t "bash /home/user/bin/create-certs.sh"
+
+ansible -i ./stend.txt -m copy -a "src=./importKeys.sh dest=/home/user/bin/importKeys.sh" new
+
+
+for i in `cat new.txt`; do ssh user@$i -t "bash /home/user/bin/create-certs.sh"; done
+
+ansible -become --ask-become-pass -i ./stend.txt -m service -a "name=masterchain.service state=started" new
+
+
+ansible -i ./stend.txt -a "/opt/cprocsp/bin/amd64/certmgr -export -cont Masterchain-Node-Signer -dest /home/user/{{inventory_hostname}}.crt" test
+
+ansible -i ./stend.txt -m copy -a "src=/mnt/distr/geth20190824/meth dest=/home/user/masterchain/meth owner=user group=user mode='755'" new
+
+

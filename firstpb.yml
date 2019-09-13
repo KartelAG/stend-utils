@@ -1,0 +1,57 @@
+- hosts: stend
+
+  tasks:
+  - name: Copy masterchain dir
+    copy:
+      src: /home/user/ansible/stend/masterchain
+      dest: /home/user/
+
+  - name: make meth executable
+    file:
+      path: /home/user/masterchain/meth
+      mode: '0755'
+      owner: user
+      group: user
+
+  - name: make connectToRootNode executable
+    file:
+      path: /home/user/masterchain/connectToRootNode.sh
+      mode: '0755'
+      owner: user
+      group: user
+
+  - name: Copy bin dir
+    copy:
+      src: /home/user/ansible/stend/bin
+      dest: /home/user/
+
+  - name: make bin dir executable
+    file:
+      path: /home/user/bin/{{ item }}
+      mode: '0755'
+    with_items:
+      - create-certs.sh
+      - getServerCli.sh
+      - importKeys.sh
+
+  - name: Copy certs dir
+    copy:
+      src: /home/user/ansible/stend/certs
+      dest: /home/user/
+
+  - name: install rootca
+    shell: echo 'o' | /opt/cprocsp/bin/amd64/certmgr -install -f /home/user/certs/rootca.cer -store uRoot
+    args:
+      warn: no
+
+  - name: install subca
+    shell: echo 'o' | /opt/cprocsp/bin/amd64/certmgr -install -f /home/user/certs/subca.cer -store uRoot
+    args:
+      warn: no
+
+  - name: install newrootca
+    shell: echo 'o' | /opt/cprocsp/bin/amd64/certmgr -install -f /home/user/certs/newroot.ca -store uRoot
+    args:
+      warn: no
+
+ 

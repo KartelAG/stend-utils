@@ -1,0 +1,132 @@
+[nodes-101]
+mchain-101-01	ansible_host=192.168.101.10
+mchain-101-03	ansible_host=192.168.101.11
+mchain-101-04	ansible_host=192.168.101.12
+mchain-101-05	ansible_host=192.168.101.13
+mchain-101-06	ansible_host=192.168.101.14
+mchain-101-02	ansible_host=192.168.101.15
+mchain-101-07	ansible_host=192.168.101.16
+mchain-101-08	ansible_host=192.168.101.17
+mchain-101-09	ansible_host=192.168.101.18
+mchain-101-10	ansible_host=192.168.101.19
+
+[nodes-102]
+mchain-102-01	ansible_host=192.168.102.11
+mchain-102-02	ansible_host=192.168.102.12
+mchain-102-03	ansible_host=192.168.102.13
+mchain-102-04	ansible_host=192.168.102.14
+mchain-102-05	ansible_host=192.168.102.15
+mchain-102-06	ansible_host=192.168.102.16
+mchain-102-07	ansible_host=192.168.102.17
+mchain-102-08	ansible_host=192.168.102.18
+mchain-102-09	ansible_host=192.168.102.19
+mchain-102-10	ansible_host=192.168.102.20
+
+[nodes-103]
+mchain-103-01	ansible_host=192.168.103.11
+mchain-103-02	ansible_host=192.168.103.12
+mchain-103-03	ansible_host=192.168.103.13
+mchain-103-04	ansible_host=192.168.103.14
+mchain-103-05	ansible_host=192.168.103.15
+mchain-103-06	ansible_host=192.168.103.16
+mchain-103-07	ansible_host=192.168.103.17
+mchain-103-08	ansible_host=192.168.103.18
+mchain-103-09	ansible_host=192.168.103.19
+mchain-103-10	ansible_host=192.168.103.20
+
+[nodes-104]
+mchain-104-01	ansible_host=192.168.104.10
+mchain-104-02	ansible_host=192.168.104.11
+mchain-104-03	ansible_host=192.168.104.12
+mchain-104-04	ansible_host=192.168.104.13
+mchain-104-05	ansible_host=192.168.104.14
+mchain-104-06	ansible_host=192.168.104.15
+mchain-104-07	ansible_host=192.168.104.16
+mchain-104-08	ansible_host=192.168.104.17
+mchain-104-09	ansible_host=192.168.104.18
+mchain-104-10	ansible_host=192.168.104.19
+
+[nodes-105]
+mchain-105-01	ansible_host=192.168.105.10
+mchain-105-02	ansible_host=192.168.105.11
+mchain-105-04	ansible_host=192.168.105.12
+mchain-105-05	ansible_host=192.168.105.13
+mchain-105-06	ansible_host=192.168.105.14
+mchain-105-07	ansible_host=192.168.105.15
+mchain-105-08	ansible_host=192.168.105.16
+mchain-105-09	ansible_host=192.168.105.17
+mchain-105-10	ansible_host=192.168.105.18
+mchain-105-03	ansible_host=192.168.105.19
+
+[nodes:children]
+nodes-101
+nodes-102
+nodes-103
+nodes-104
+nodes-105
+
+[test]
+mchain-105-03   ansible_host=192.168.105.19
+
+[stend:children]
+bootnodes
+miners
+readers
+
+[bootnodes]
+mchain01 ansible_host=192.168.201.12
+
+[miners]
+mchain-101-01   ansible_host=192.168.101.10
+mchain-101-03   ansible_host=192.168.101.11
+mchain-101-04   ansible_host=192.168.101.12
+mchain-101-05   ansible_host=192.168.101.13
+mchain-101-02   ansible_host=192.168.101.15
+mchain-102-01   ansible_host=192.168.102.11
+mchain-102-02   ansible_host=192.168.102.12
+mchain-102-03   ansible_host=192.168.102.13
+mchain-102-04   ansible_host=192.168.102.14
+mchain-102-05   ansible_host=192.168.102.15
+mchain-103-01   ansible_host=192.168.103.11
+mchain-103-02   ansible_host=192.168.103.12
+mchain-103-03   ansible_host=192.168.103.13
+mchain-103-04   ansible_host=192.168.103.14
+mchain-103-05   ansible_host=192.168.103.15
+mchain-104-01   ansible_host=192.168.104.10
+mchain-104-02   ansible_host=192.168.104.11
+mchain-104-03   ansible_host=192.168.104.12
+mchain-104-04   ansible_host=192.168.104.13
+mchain-104-05   ansible_host=192.168.104.14
+mchain-105-01   ansible_host=192.168.105.10
+mchain-105-02   ansible_host=192.168.105.11
+mchain-105-04   ansible_host=192.168.105.12
+mchain-105-05   ansible_host=192.168.105.13
+mchain-105-03   ansible_host=192.168.105.19
+
+[readers]
+mchain-101-06   ansible_host=192.168.101.14
+mchain-101-07   ansible_host=192.168.101.16
+mchain-101-08   ansible_host=192.168.101.17
+mchain-101-09   ansible_host=192.168.101.18
+mchain-101-10   ansible_host=192.168.101.19
+mchain-102-06   ansible_host=192.168.102.16
+mchain-102-07   ansible_host=192.168.102.17
+mchain-102-08   ansible_host=192.168.102.18
+mchain-102-09   ansible_host=192.168.102.19
+mchain-102-10   ansible_host=192.168.102.20
+mchain-103-06   ansible_host=192.168.103.16
+mchain-103-07   ansible_host=192.168.103.17
+mchain-103-08   ansible_host=192.168.103.18
+mchain-103-09   ansible_host=192.168.103.19
+mchain-103-10   ansible_host=192.168.103.20
+mchain-104-06   ansible_host=192.168.104.15
+mchain-104-07   ansible_host=192.168.104.16
+mchain-104-08   ansible_host=192.168.104.17
+mchain-104-09   ansible_host=192.168.104.18
+mchain-104-10   ansible_host=192.168.104.19
+mchain-105-06   ansible_host=192.168.105.14
+mchain-105-07   ansible_host=192.168.105.15
+mchain-105-08   ansible_host=192.168.105.16
+mchain-105-09   ansible_host=192.168.105.17
+mchain-105-10   ansible_host=192.168.105.18
+

@@ -1,0 +1,17 @@
+[Unit]
+Description=Masterchain Service
+After=network.target
+
+[Service]
+User=user
+ExecStart=/home/user/masterchain/meth --config /home/user/masterchain/config.toml
+SyslogIdentifier=masterchain
+KillMode=process
+Restart=on-failure
+RestartPreventExitStatus=255
+RestartSec=1
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
+Alias=masterchain.service

@@ -1,0 +1,8 @@
+- hosts: stend
+  tasks:
+  - name: install mchain01 cert
+    shell: echo 'o' | /opt/cprocsp/bin/amd64/certmgr -install -f /home/user/certs/mchain01.cer
+    args:
+      warn: no
+
+

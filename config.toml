@@ -1,0 +1,21 @@
+[Eth]
+Whitelist = "0xc9fa1b7919400b438bed82f58745013bba1818d5"
+
+[Node]
+DataDir = "/home/user/masterchain/masterchain_data"
+IPCPath = "meth.ipc"
+HTTPHost = "0.0.0.0"
+HTTPPort = 20000
+HTTPModules = ["net", "web3", "eth", "admin", "personal", "txpool", "network", "db"]
+WSHost = "0.0.0.0"
+WSPort = 8545
+WSOrigins = ["*"]
+WSModules = ["net", "web3", "eth", "admin", "personal", "txpool", "network", "db"]
+
+
+[Node.P2P]
+ListenAddr = ":30303"
+BootstrapNodes = [
+"enode://86b0aadda0cfe83d4205a30956bac7b2b3b89d0d8419f0eee7d6ab6f5c620186f1b5c4c1c24a7845b679ea9e37071159c859af85e0cad2fd938db40b477740ee@192.168.201.12:30303"
+]
+
